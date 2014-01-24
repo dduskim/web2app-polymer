@@ -17,23 +17,15 @@
 
         <!-- Place your HTML imports here -->
         <script src="bower_components/platform/platform.js"></script>
-        <link rel="import" href="elements/list.html">
-        <link rel="import" href="elements/greeting.html">
+		<link rel="import" href="elements/btn-web2app.html">
     </head>
     <body>
-
-        
-        <div class="hero-unit">
-          <polymer-greeting></polymer-greeting>
-          <p>You now have</p>
-          <polymer-list><polymer-list>
-        </div>
-        
-
-      <script>
-        document.addEventListener('WebComponentsReady', function() {
-            // Perform some behaviour
-        });
-      </script>
+		<polymer-btn-web2app
+			urlScheme="myp://sendMessage?message=web2app test&url=http%3A%2F%2Fwww.daum.net&appID=localhost"
+			intentURI="intent://sendMessage?message=web2app%20test%0D%0Ahttp%3A%2F%2Fwww.daum.net#Intent;scheme=myp;package=net.daum.android.air;end"
+			storeURL="itms-apps://itunes.apple.com/kr/app/id373539016?mt=8"
+			appName="마이피플"
+			></polymer-btn-web2app>
+			<!--market://details?id=net.daum.android.air-->
     </body>
 </html>

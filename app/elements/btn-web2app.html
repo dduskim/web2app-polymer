@@ -1,0 +1,39 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="web2app/web2app.html">
+
+<polymer-element name="polymer-btn-web2app" attributes="urlScheme intentURI storeURL appName">
+	<style>
+		/* styles for the custom element itself - lowest specificity */
+		:host { display: block; }
+	</style>
+	<template>
+		<button on-click="{{onClickHandler}}" id="web2appTestBtn">버튼</button>
+	</template>
+	<script>
+		Polymer('polymer-btn-web2app', {
+			urlScheme: '',
+			intentURI: '',
+			storeURL : '',
+			appName  : '',
+			onClickHandler: function () {
+				var ua = daumtools.userAgent();
+				if (ua.platform === 'pc') {
+					alert('모바일 기기에서 이용 가능한 기능입니다.\r\n마이피플이 설치된 스마트폰에서 이용해 주세요.');
+				} else {
+					daumtools.web2app({
+						urlScheme : this.urlScheme,
+						intentURI : this.intentURI,
+						storeURL  : this.storeURL,
+						appName   : this.appName,
+						onUnsupportedEnvironment: function() {
+							console.log('go to web page'); //example
+						},
+						willInvokeApp: function() {
+							console.log('send click log'); //example
+						}
+					});
+				}
+			}
+		});
+	</script>
+</polymer-element>
